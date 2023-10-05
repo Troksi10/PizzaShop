@@ -18,12 +18,25 @@
                     <div class="col-4">
                         <img src="~/images/Pizzas/Create.png" class="w-100" />
                     </div>
+                    <div class="col-8 align-items-center">
                     <div class="col-8 align-middle makeYourOwnText"></div>
                     <h3 style="text-align:left">Create your Own Pizza</h3>
                     <p style="text-align:left">Make your own Pizza with our PizzaMaker!</p>
                     <a class="btn btn-primary mt-1" style="float:left" asp-area="" asp-page="Forms/CustomPizza">Try NOW!</a>
+                    </div>
                 </div>
             </div>
         </div>
+            @foreach (var pizza in Model.fakePizzaDB)
+            {
+                var imagePath = "~/images/Pizzas/" + (pizza.ImageTitle + ".png");
+            <div class="col-4 mb-5">
+                <a class="pizza-img" asp-area="" asp-page="Checkout/Checkout" 
+                asp-route-PizzaName="@pizza.PizzaName" asp-route-PizzaPrice = "@pizza.FinalPrice"/>
+                <img src="@imagePath" class="w-100" asp-append-version="true" />
+
+                <br />
+            </div>
+            }           
     </div>
 </div>
